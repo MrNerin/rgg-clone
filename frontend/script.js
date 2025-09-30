@@ -139,41 +139,40 @@ updateFriendsList();
 // WebSocket
 let ws = null;
 
-// Функция подключения к серверу
 function connectToServer() {
-  setTimeout(() => {
-    try {
-      ws = new WebSocket('wss://rgg-backend.onrender.com');
+  try {
+    ws = new WebSocket('wss://rgg-backend.onrender.com');
 
-      ws.onopen = () => {
-        console.log('Соединение с сервером установлено');
-        ws.send(JSON.stringify({
-          type: 'join',
-          roomId: 'room1',
-          playerName: 'Player1'
-        }));
-      };
+    ws.onopen = () => {
+      console.log('Соединение с сервером установлено');
+      // ✅ Отправляем ТОЛЬКО здесь
+      ws.send(JSON.stringify({
+        type: 'join',
+        roomId: 'room1',
+        playerName: 'Player1'
+      }));
+    };
 
-      ws.onmessage = (event) => {
-        const data = JSON.parse(event.data);
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.type === 'players') {
+        updateOtherPlayers(data.players);
+      }
+    };
 
-        if (data.type === 'players') {
-          updateOtherPlayers(data.players);
-        }
-      };
+    ws.onerror = (error) => {
+      console.error('Ошибка WebSocket:', error);
+    };
 
-      ws.onclose = () => {
-        console.log('Соединение с сервером закрыто');
-      };
-
-      ws.onerror = (error) => {
-        console.error('Ошибка WebSocket:', error);
-      };
-    } catch (e) {
-      console.warn('Не удалось подключиться к серверу. Работаем в автономном режиме.');
-    }
-  }, 0);
+    ws.onclose = () => {
+      console.log('Соединение с сервером закрыто');
+    };
+  } catch (e) {
+    console.warn('Не удалось создать WebSocket:', e);
+  }
 }
+
+connectToServer();
 
 connectToServer();
 // Функция отправки позиции на сервер
