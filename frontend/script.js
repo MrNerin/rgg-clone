@@ -143,7 +143,7 @@ let ws = null;
 function connectToServer() {
   setTimeout(() => {
     try {
-      ws = new WebSocket('wss://clonerg-server.onrender.com');
+      ws = new WebSocket('wss://rgg-backend.onrender.com');
 
       ws.onopen = () => {
         console.log('Соединение с сервером установлено');
