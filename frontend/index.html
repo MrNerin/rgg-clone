@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RGG - для нищих | Пиксельное приключение</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="crt-effect">
+    <header class="header">
+      <h1>RGG - для нищих</h1>
+      <nav class="nav">
+        <a href="#" class="nav-btn">🗺️ Карта</a>
+        <a href="#" class="nav-btn">📜 Квесты</a>
+        <a href="#" class="nav-btn">🎒 Инвентари</a>
+        <a href="#" class="nav-btn">🤝 Взаимодействия</a>
+        <a href="#" class="nav-btn">📜 Кодекс</a>
+        <a href="#" class="nav-btn">📊 Статистика</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="info-section">
+        <h2 class="info-title">RGG - для нищих | Сегодня <span id="current-date"></span></h2>
+        <p>Приключения начинаются...</p>
+        <button class="start-btn">Перейти на сайт</button>
+      </section>
+
+      <section class="quests-section">
+        <h2>Квесты</h2>
+        <div class="quest-list">
+          <div class="quest-card">
+            <h3>🎯 Найди сокровище</h3>
+            <p>Исследуй пустыню и найди спрятанный сундук.</p>
+          </div>
+          <div class="quest-card">
+            <h3>⚔️ Победи босса</h3>
+            <p>Доберись до замка и сразись с повелителем огня.</p>
+          </div>
+          <div class="quest-card">
+            <h3>🔍 Загадка леса</h3>
+            <p>Реши головоломку, чтобы открыть врата.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="map-section">
+        <h2>Карта мира</h2>
+        <div id="map-container" class="map-container"></div>
+        <div class="controls">
+          <p>Используйте колесо мыши для масштабирования</p>
+          <div class="player-info">
+            <span>Позиция: <span id="position">-</span></span>
+          </div>
+          <div class="cell-info">
+            <span>Выбрана клетка: <span id="selected-cell">-</span></span>
+          </div>
+
+          <!-- Новый блок: друзья -->
+          <div class="friends-section">
+            <h3>Друзья</h3>
+            <input type="text" id="friend-name" placeholder="Имя друга">
+            <button id="add-friend-btn">Добавить друга</button>
+            <div id="friends-list"></div>
+          </div>
+
+          <div class="inventory-section">
+            <h3>Инвентарь</h3>
+            <div id="inventory-list">Пока пусто</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="#">Поиск игр по сезонам</a> | <a href="#">Что такое RGG?</a> | <a href="#">О нас</a> | <a href="#">Мультистрим</a> | <a href="#">RGG-телеграм</a> | <a href="#">RGG-дискорд</a>
+    </footer>
+  </div>
+
+  <script src="map-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
